@@ -5,7 +5,7 @@ Collection of utilities to conduct simple data operations using python over Post
 
 Usage (required parameters):
 ```sh
-python pgsql2csv.py -h <postgresql db host name> -u <db user> -n <db name> -p <db password> -t <tablename>
+python pgsql2csv.py -h <db host address> -u <db user> -n <db name> -p <db password> -t <tablename>
 ```
 
 optional parameters:
