@@ -21,6 +21,9 @@ parser.add_option("-o", "--out", dest="outputfile",
                   type="string", help="Output file (default=table name)")
 parser.add_option("-s", "--select", dest="selectstatement", default="*", 
                   type="string", help="Select columns to be included")
+parser.add_option("-w", "--where", dest="wherestatement", 
+                  type="string", help="Filter data through WHERE statement. " + 
+                  "Do not include WHERE")
 
 (options, args) = parser.parse_args()
 
@@ -41,6 +44,12 @@ if options.outputfile is None:
     outputfile = options.tablename + ".csv"
 else:
     outputfile = options.outputfile + ".csv"
+    
+# checking where statement
+if options.wherestatement is None:
+    wherestatement = ""
+else:
+    wherestatement = " WHERE "+ options.wherestatement
 
 # connecting to the DB
 try:
@@ -56,7 +65,8 @@ print "Database connection established"
 cur = conn.cursor()
 
 # get all data from the db table
-cur.execute("SELECT " + options.selectstatement + " FROM " + options.tablename)
+cur.execute("SELECT " + options.selectstatement + " FROM " + 
+            options.tablename + wherestatement)
 rows = cur.fetchall()
 
 # write data to a csv file
