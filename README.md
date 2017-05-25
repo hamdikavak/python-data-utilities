@@ -10,5 +10,5 @@ python pgsql2csv.py -h <db host address> -u <db user> -n <db name> -p <db passwo
 
 optional parameters:
 ```sh
-... -s <select statement> -o <output file path>
+... -s <select statement> -o <output file path> -w <where statement>
 ```
