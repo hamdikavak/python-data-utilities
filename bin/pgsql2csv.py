@@ -1,7 +1,6 @@
 import sys
 from optparse import OptionParser
-import psycopg2
-import csv
+import data_utils.db as du
 
 parser = OptionParser(add_help_option=False)
 
@@ -38,39 +37,8 @@ if options.tablename is None:
     parser.print_help()
     sys.exit()
 
-# lets use the provided filename or use the table name
-if options.outputfile is None:
-    outputfile = options.tablename + ".csv"
-else:
-    outputfile = options.outputfile + ".csv"
-    
-# checking where statement
-if options.wherestatement is None:
-    wherestatement = ""
-else:
-    wherestatement = " WHERE "+ options.wherestatement
-
-# connecting to the DB
-try:
-    conn = psycopg2.connect("dbname=" + options.dbname + " " +
-                            "user=" + options.dbuser + " " +
-                            "host=" + options.dbhost + " " + 
-                            "password=" + options.dbpass)
-except:
-    sys.exit("Database connection failed")
-    
-print "Database connection established"
-
-cur = conn.cursor()
-
-# get all data from the db table
-cur.execute("SELECT " + options.selectstatement + " FROM " + 
-            options.tablename + wherestatement)
-rows = cur.fetchall()
-
-# write data to a csv file
-with open(outputfile, 'wb') as f:
-    writer = csv.writer(f)
-    writer.writerows(rows)
-
-conn.close()
+du.postgresqlToCSV(options.dbhost, options.dbname, options.dbuser,
+                   options.dbpass, options.tablename, 
+                   outputfile=options.outputfile, 
+                   selectstatement=options.selectstatement, 
+                   wherestatement=options.wherestatement)
