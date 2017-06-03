@@ -1,7 +1,7 @@
 from setuptools import setup
 
 setup(
-    name='data_utils',
+    name='datautils',
     version='0.0.1',
     description='Data utilities and wrappers for academic data science projects.',
     author='Hamdi Kavak',
@@ -10,6 +10,7 @@ setup(
     license='MIT',
     keywords='data science, utility, wrapper',
     scripts = ['bin/pgsql2csv.py'],
+    packages=['datautils'],
     install_requires=['psycopg2==2.7.1',
                       'numpy==1.12.1',
                       'matplotlib==2.0.1',

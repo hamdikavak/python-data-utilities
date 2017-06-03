@@ -1,6 +1,6 @@
 import sys
 from optparse import OptionParser
-import data_utils.db as du
+import datautils as du
 
 parser = OptionParser(add_help_option=False)
 
