@@ -10,14 +10,26 @@ python setup.py install
 ### pgsql2csv
 Exports a PostgreSQL table to a .csv file.
 
+#### as a command line tool
 w/ required parameters:
 ```sh
-python pgsql2csv.py -h <db host address> -u <db user> -n <db name> -p <db password> -t <tablename>
+pgsql2csv.py -h <db address> -u <db user> -n <db name> -p <db password> -t <tablename>
 ```
 
 w/ optional parameters:
 ```sh
 ... -s <select statement> -o <output file path> -w <where statement>
+```
+
+#### as a python package
+```python
+import datautils as du
+
+du.postgresqlToCSV("db_address","db_name", "db_user",
+                   "db_pass", "table_name", 
+                   outputfile="output_file_name", # optional
+                   selectstatement="comma separated column names", # optional
+                   wherestatement="conditional statements") # optional
 ```
 
 ## Troubleshooting
