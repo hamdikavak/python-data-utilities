@@ -1,6 +1,6 @@
 # Hamdi Kavak
 # 
-# MIT Licensed
+# MIT License
 # Plotting wrapper functions.
 import numpy as np
 import matplotlib.pyplot as plt

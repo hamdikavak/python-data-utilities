@@ -1,3 +1,8 @@
+# Hamdi Kavak
+# 
+# MIT License
+# Postgresql utilities
+
 import sys
 import psycopg2
 import csv
