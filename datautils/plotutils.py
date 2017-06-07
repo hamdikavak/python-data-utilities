@@ -24,7 +24,7 @@ def resetPlotAx(ax):
 	
 	return ax
 
-def makeBarPlot(df, barprop, filename, 
+def makeBarPlot(df, barprop, filename=None, 
                 xlabel=None, ylabel=None, 
                 xlim=None, ylim=[0,100], 
                 figuresize=(6, 3), barwidth=0.1):
@@ -37,8 +37,9 @@ def makeBarPlot(df, barprop, filename,
     
     if xlim != None:
         ax.set_xlim(xlim)
-        
-    ax.set_ylim(ylim)
+    
+    if ylim != None:    
+        ax.set_ylim(ylim)
 
     loop_index = 0
     
@@ -63,11 +64,15 @@ def makeBarPlot(df, barprop, filename,
     leg.get_frame().set_edgecolor(g_legend_edgecolor)
 	
     plt.tight_layout()
-    plt.savefig(filename, format='eps', dpi=1200)
+    
+    if filename != None:
+        plt.savefig(filename, format='eps', dpi=1200)
+    else:
+    	plt.show()
     
     return;
     
-def makeLinePlot(df, lineprop, filename, xaxisdatetime=False,
+def makeLinePlot(df, lineprop, filename=None, xaxisdatetime=False,
                 xlabel=None, ylabel=None, 
                 xlim=None, ylim=[0,100], 
                 figuresize=(10, 3)):
@@ -118,6 +123,9 @@ def makeLinePlot(df, lineprop, filename, xaxisdatetime=False,
     leg.get_frame().set_edgecolor(g_legend_edgecolor)
     plt.tight_layout()
     
-    plt.savefig(filename, format='eps', dpi=1200)
+    if filename != None:
+		plt.savefig(filename, format='eps', dpi=1200)
+    else:
+		plt.show()
     
     return;
