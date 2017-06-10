@@ -83,6 +83,9 @@ def makeLinePlot(df, lineprop, filename=None, xaxisdatetime=False,
     
     if xlim != None:
         ax.set_xlim(xlim)
+    
+    if ylim != None:    
+        ax.set_ylim(ylim)
         
     ax.set_ylim(ylim)
     ax = resetPlotAx(ax)
