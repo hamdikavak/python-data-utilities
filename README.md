@@ -1,15 +1,21 @@
 Collection of utilities to conduct simple data operations using python over PostgreSQL databases and more. I do not promise super efficient and elegant code as I publish this while I am learning python.
 
-# installation
+# Installation
 ```sh
 python setup.py install
 ```
 
-# usage
+# Troubleshooting
+
+`Error: pg_config executable not found.` 
+
+If you come across the above error, you need to install a postgresql instance and export its `bin` folder address to the `PATH` variable. In MacOS, you can install using `brew install postgresql` 
+
+# Usage
 ## 1. pgsql2csv
 Exports a PostgreSQL table to a .csv file.
 
-### 1.1. as a command line tool
+*as a command line tool*
 w/ required parameters:
 ```sh
 pgsql2csv.py -h <db address> -u <db user> -n <db name> -p <db password> -t <tablename>
@@ -20,7 +26,7 @@ w/ optional parameters:
 ... -s <select statement> -o <output file path> -w <where statement>
 ```
 
-### 1.2. as a python package
+*as a python package*
 ```python
 import datautils as du
 
@@ -50,10 +56,3 @@ bar_prop = {'col1':{'color': 'r', 'label': 'Col 1 values'},
 
 du.makeBarPlot(df_obj, bar_prop, ylim=None)
 ```
-
-
-# Troubleshooting
-
-`Error: pg_config executable not found.` 
-
-If you come across the above error, you need to install a postgresql instance and export its `bin` folder address to the `PATH` variable. In MacOS, you can install using `brew install postgresql` 
