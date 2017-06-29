@@ -1,16 +1,15 @@
-# Data utilities for pyhton
 Collection of utilities to conduct simple data operations using python over PostgreSQL databases and more. I do not promise super efficient and elegant code as I publish this while I am learning python.
 
-## installation
+# installation
 ```sh
 python setup.py install
 ```
 
-## usage
-### pgsql2csv
+# usage
+## 1. pgsql2csv
 Exports a PostgreSQL table to a .csv file.
 
-#### as a command line tool
+### 1.1. as a command line tool
 w/ required parameters:
 ```sh
 pgsql2csv.py -h <db address> -u <db user> -n <db name> -p <db password> -t <tablename>
@@ -21,7 +20,7 @@ w/ optional parameters:
 ... -s <select statement> -o <output file path> -w <where statement>
 ```
 
-#### as a python package
+### 1.2. as a python package
 ```python
 import datautils as du
 
@@ -32,9 +31,8 @@ du.postgresqlToCSV("db_address","db_name", "db_user",
                    wherestatement="conditional statements") # optional
 ```
 
-### plotting utilities
+## 2. plotting utilities
 
-#### as a python package
 ```python
 import numpy as np
 from pandas import Series, DataFrame
@@ -54,7 +52,7 @@ du.makeBarPlot(df_obj, bar_prop, ylim=None)
 ```
 
 
-## Troubleshooting
+# Troubleshooting
 
 `Error: pg_config executable not found.` 
 
